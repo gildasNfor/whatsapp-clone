@@ -4,9 +4,11 @@ import "./App.css";
 import Chat from "./Chat";
 import Login from "./Login";
 import Sidebar from "./Sidebar";
+import { useStateValue } from "./StateProvider";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [{ user }, dispatch] = useStateValue();
+
   return (
     <div className="app">
       {!user ? (
@@ -20,7 +22,7 @@ function App() {
                 <Chat />
               </Route>
               <Route path="/">
-                <h1>Welcome</h1>
+                <Chat />
               </Route>
             </Switch>
           </Router>
